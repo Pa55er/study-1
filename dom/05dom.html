@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            main {
+                border: 1px solid red;
+            }
+            .log {
+                width: 200px;
+                height: 200px;
+                background-color: aliceblue;
+                margin: 50px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="log">마우스 이벤트 영역</div>
+        </main>
+
+        <script>
+            const eventArea = document.querySelector(".log");
+
+            eventArea.addEventListener("mousedown", () => {
+                console.log("mousedown - 마우스 버튼을 누르고 있다.");
+            });
+            eventArea.addEventListener("mouseup", () => {
+                console.log("mouseup - 마우스 버튼에서 손을 땐 상태");
+            });
+            eventArea.addEventListener("mousemove", () => {
+                console.log("mousemove - 마우스 포인터가 이동중인 상태");
+            });
+            eventArea.addEventListener("mouseenter", () => {
+                console.log("mouseenter - 마우스 포인터가 영역 내부에 진입");
+            });
+            eventArea.addEventListener("mouseleave", () => {
+                console.log(
+                    "mouseleave - 마우스 포인터가 영역 밖으로 빠진 상태"
+                );
+            });
+        </script>
+    </body>
+</html>

@@ -26,6 +26,16 @@
         </div>
 
         <script>
+            if (navigator.onLine) {
+                console.log("연결상태");
+            }
+            window.addEventListener("online", () => {
+                console.log("온라인");
+            });
+            window.addEventListener("offline", () => {
+                console.log("오프라인");
+            });
+
             document.querySelector(".fullBtn").addEventListener("click", () => {
                 document.querySelector(".con").requestFullscreen();
             });
