@@ -19,6 +19,9 @@
                 position: absolute;
                 background: url(./img/r4.png);
                 background-size: contain;
+                /* left: 200px;
+                top: 200px; */
+                /* transform: translate(200px, 200px); */
             }
         </style>
     </head>
@@ -29,10 +32,31 @@
         <section class="sec">test</section>
 
         <script>
+            // clientX, clientY - 브라우저 화면에서 마우스 포인트 좌표
+            // offsetX, offsetY - 이벤트 대상 요소에서 거리
+            // pageX, pageY - 문서 전체
+            // screenX, screenY -
+
+            const $sun = document.querySelector(".sun");
             const $targetArea = document.querySelector(".targetArea");
-            $targetArea.addEventListener("mousemove", () => {
-                console.log("마우스 움직임");
+
+            $sun.addEventListener("mousedown", () => {
+                console.log("마우스 눌렀다");
+                $sun.addEventListener("mousemove", onMouseMove);
+                $sun.addEventListener("mouseup", () => {
+                    $sun.removeEventListener("mousemove", onMouseMove);
+                });
             });
+
+            function onMouseMove(e) {
+                $sun.style.cssText = `
+                transform: translate(${e.pageX - 55}%, ${e.pageY - 55}%);
+                `;
+            }
+
+            // $targetArea.addEventListener("mousemove", () => {
+            //     console.log("마우스 움직임");
+            // });
         </script>
     </body>
 </html>
