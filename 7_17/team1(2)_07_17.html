@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @font-face {
+        font-family: "GmarketSans";
+        font-weight: 700;
+        font-style: normal;
+        src: url("https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot");
+        src: url("https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot?#iefix")
+            format("embedded-opentype"),
+          url("https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff2")
+            format("woff2"),
+          url("https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff")
+            format("woff"),
+          url("https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.ttf")
+            format("truetype");
+        font-display: swap;
+      }
+
+      body {
+        background-color: blanchedalmond;
+      }
+
+      header {
+        width: 100%;
+        background-color: white;
+      }
+
+      nav.gnb {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      ul.main-nav:hover + .sub-nav-bg {
+        opacity: 1;
+      }
+
+      ul.main-nav:hover ul.sub-nav {
+        display: block;
+      }
+
+      ul.main-nav {
+        display: flex;
+      }
+
+      ul.main-nav > li {
+        padding: 2rem 3.2rem;
+        position: relative;
+      }
+
+      ul.main-nav > li > a {
+        font-family: "GmarketSans", sans-serif;
+        font-size: 1.3rem;
+        color: #134aa9;
+        text-decoration: none;
+      }
+
+      ul.main-nav > li:hover > a {
+        color: #2a2e35;
+      }
+
+      ul.sub-nav {
+        display: none;
+        position: absolute;
+        width: 100%;
+        padding: 66px 0 0 3.2rem;
+        left: 0;
+        z-index: 9999;
+      }
+
+      ul.sub-nav > li > a {
+        text-decoration: none;
+        display: inline-block;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        padding-bottom: 1.5rem;
+        color: #2a2e35;
+        position: relative;
+      }
+
+      ul.sub-nav li a:hover {
+        color: #134aa9;
+      }
+
+      ul.sub-nav li a::after {
+        content: "";
+        position: absolute;
+        top: 1px;
+        right: -20px;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background-color: #134aa9;
+        opacity: 0;
+        transition: opacity 0.5s;
+        transform: translate(0, 50%);
+      }
+
+      ul.sub-nav li a:hover::after {
+        opacity: 1;
+      }
+
+      .sub-nav-bg {
+        opacity: 0;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        height: 230px;
+        background-color: #eff4fe;
+        /* z-index: -1; */
+        transition: opacity 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="gnb">
+        <ul class="main-nav">
+          <li>
+            <a href="#">경기생활문화센터</a>
+            <ul class="sub-nav">
+              <li><a href="#">센터소개</a></li>
+              <li><a href="#">조직도</a></li>
+              <li><a href="#">사업안내</a></li>
+              <li><a href="#">오시는길</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">경기도생활문화</a>
+            <ul class="sub-nav">
+              <li><a href="#">우리지역 생활문화공간</a></li>
+              <li><a href="#">생활문화찾기</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">기록자료</a>
+            <ul class="sub-nav">
+              <li><a href="#">영상채널</a></li>
+              <li><a href="#">발간도서</a></li>
+              <li><a href="#">지난사업</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">웹진</a>
+            <ul class="sub-nav">
+              <li><a href="#">소개</a></li>
+              <li><a href="#">웹진</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">소통</a>
+            <ul class="sub-nav">
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">자주묻는질문</a></li>
+              <li><a href="#">1:1문의</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="sub-nav-bg"></div>
+      </nav>
+    </header>
+    <main>여기 내용이...</main>
+  </body>
+</html>

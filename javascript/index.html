@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <section class="w_dataCon">
+                <h1>주간날씨</h1>
+                <ul>
+                    <li>
+                        <p>날짜: 2024-07-29</p>
+                        <p>온도 : 31도 / 24도</p>
+                        <p>날씨 아이콘</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <script>
+            const createList = (item) => {
+                // item.date는 Number 타입이고 문자로 변경되어도 new Date() 매개변수로 사용될 수 있도록 가공이 필요함
+                const dateString = item.date.toString();
+                console.log(dateString);
+                const year = dateString.substring(0, 4);
+                const month = dateString.substring(4, 6) - 1; // 월은 0부터 시작
+                const day = dateString.substring(6, 8);
+                const dateInfo = new Date(year, month, day);
+
+                const dateStr = dateInfo.toISOString().split("T")[0]; // 'YYYY-MM-DD' 형식으로 변환
+                const tempUit = `&deg;C`; // 엔티티 코드
+                return `
+                    <li>
+                        <p>날짜: ${dateStr}</p>
+                        <p>온도: ${item.temp2m.max}${tempUit} / ${item.temp2m.min}${tempUit}</p>
+                        <p>날씨: <img src="./img/${item.weather}.jpg" width=30px"/></p>
+                        <p>풍량: ${item.wind10m_max}</p>
+                    </li>
+                `;
+            };
+
+            const displayItems = (items) => {
+                const dataCon = document.querySelector(".w_dataCon");
+                dataCon.innerHTML = `
+                <h1>주간날씨 ${items.length}</h1>
+                <ul>
+                    ${items.map(createList).join("")}
+                </ul>
+                `;
+            };
+
+            const fetchData = async (url) => {
+                const res = await fetch(url);
+                console.log("-----", res);
+                if (!res.ok) {
+                    throw new Errow(`서버에러 ${res.status}`);
+                }
+                return res.json();
+            };
+
+            const loadItems = async () => {
+                const dataUrl =
+                    "https://www.7timer.info/bin/api.pl?lon=127.378&lat=36.349&product=civillight&output=json";
+                try {
+                    const data = await fetchData(dataUrl);
+                    return data.dataseries;
+                } catch (error) {
+                    console.log(error);
+                    return [];
+                }
+            };
+
+            const init = async () => {
+                const items = await loadItems();
+                console.log(items);
+                displayItems(items);
+            };
+
+            init();
+        </script>
+    </body>
+</html>

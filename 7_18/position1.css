@@ -1,0 +1,47 @@
+section {
+  border: 1px solid red;
+  height: 100vh;
+}
+
+.con {
+  border-color: lightblue;
+  border-width: 5px;
+  height: 80vh;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.con > div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.con > div:nth-of-type(1) {
+  background-color: antiquewhite;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 100;
+}
+
+.con > div:nth-of-type(2) {
+  position: absolute;
+  background-color: azure;
+  top: 0;
+  left: 100px;
+}
+
+.con > div:nth-of-type(3) {
+  position: fixed;
+  background-color: aqua;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+}
+
+.con > div:nth-of-type(4) {
+  position: sticky;
+  background-color: red;
+  top: 0;
+}

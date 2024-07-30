@@ -1,0 +1,73 @@
+section {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+section img {
+  width: 50%;
+}
+
+.card {
+  flex: 1;
+  position: relative;
+  padding-top: 40%;
+  perspective: 900px;
+}
+
+.card > p {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: 1px solid black;
+  backface-visibility: hidden;
+  transition: 0.5s;
+}
+
+.front {
+  z-index: 10; /*없어도 될듯*/
+  background-image: url("./img/line.png");
+  background-color: antiquewhite;
+  filter: grayscale(1);
+}
+
+.back {
+  background-color: rgb(249, 254, 229);
+  transform: rotateY(180deg);
+}
+
+.card:hover .front {
+  filter: grayscale(0);
+  transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(0deg);
+}
+
+/*000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
+
+.box {
+  background-color: antiquewhite;
+  margin: 50px auto;
+  width: 50%;
+}
+
+.box .item {
+  border: 1px solid red;
+  width: 50%;
+  padding-top: 50%;
+  margin: auto;
+  position: relative;
+}
+
+.item p {
+  position: absolute;
+  top: 0;
+}

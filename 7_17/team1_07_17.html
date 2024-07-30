@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .list {
+        max-width: 1000px;
+        width: calc(100% - 2rem);
+        height: 50px;
+        margin: 10px auto;
+        position: relative;
+        display: flex;
+        list-style: none;
+      }
+      .list > li {
+        width: 100%;
+      }
+      .list > li > a {
+        color: blue;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      .list > li > ul {
+        display: none;
+        list-style: none;
+        height: 120px;
+        background-color: aqua;
+      }
+      .list > li > ul > li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .list:hover ul {
+        display: block;
+      }
+      .list > li:hover > a {
+        color: black;
+      }
+      .list > li > ul > li > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        margin-top: 5px;
+      }
+      .list > li > ul > li > a:hover {
+        color: blue;
+      }
+      .list > li > ul > li > a:hover::after {
+        content: "\f111";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="list">
+        <li>
+          <a href="#">경기생활문화센터</a>
+          <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">경기도생활문화</a>
+          <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">기록자료</a>
+          <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">웹진</a>
+          <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">소통</a>
+          <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
