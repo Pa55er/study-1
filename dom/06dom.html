@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                color: green;
+            }
+            .sec {
+                height: 80vh;
+                border: 1px solid red;
+            }
+            .sun {
+                border: 1px solid blue;
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background: url(./img/r4.png);
+                background-size: contain;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="sun"></div>
+        <section class="sec">test</section>
+        <section class="sec targetArea">test</section>
+        <section class="sec">test</section>
+
+        <script>
+            const $targetArea = document.querySelector(".targetArea");
+            $targetArea.addEventListener("mousemove", () => {
+                console.log("마우스 움직임");
+            });
+        </script>
+    </body>
+</html>

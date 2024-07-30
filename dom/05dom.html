@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            main {
+            section {
                 border: 1px solid red;
             }
             .log {
@@ -14,15 +14,30 @@
                 background-color: aliceblue;
                 margin: 50px auto;
             }
+            .log2 {
+                background-color: antiquewhite;
+            }
         </style>
     </head>
     <body>
-        <main>
+        <section>
             <div class="log">마우스 이벤트 영역</div>
-        </main>
+        </section>
+        <section class="box">
+            <div class="log log2">마우스 이벤트 영역 2</div>
+        </section>
 
         <script>
             const eventArea = document.querySelector(".log");
+            const eventArea2 = document.querySelector(".log2");
+            const box = document.querySelector(".box");
+            box.addEventListener("mouseover", () => {
+                console.log("box - mouseover");
+            });
+            eventArea2.addEventListener("mouseover", (e) => {
+                console.log("eventArea2 - mouseover");
+                e.stopPropagation();
+            });
 
             eventArea.addEventListener("mousedown", () => {
                 console.log("mousedown - 마우스 버튼을 누르고 있다.");
