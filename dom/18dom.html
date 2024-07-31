@@ -103,7 +103,8 @@
         </main>
 
         <script>
-            const $signupFrom = document.querySelector("#signupFrom");
+            const form = document.querySelector("#signupFrom");
+            const inputs = form.querySelectorAll("input");
 
             //   // 정규표현식 패턴정보  {name : 정규표현식 , email: , password:, phone:, adress: }
             //   // 오류메시지 리스트 { name : '한글로 작성', .................................}
@@ -127,6 +128,51 @@
                 address: "주소는 10자 이상이어야 합니다.",
             };
 
+            const validateInput = (input) => {
+                const errorElement = document.getElementById(
+                    input.id + "Error"
+                );
+                let isValid = true;
+
+                if (input.id === "confirmPassword") {
+                    isValid =
+                        input.value ===
+                        document.getElementById("password").value;
+                } else if (patterns[input.id]) {
+                    isValid = patterns[input.id].test(input.value);
+                }
+
+                !isValid
+                    ? (errorElement.textContent = errorMessages[input.id])
+                    : (errorElement.textContent = "");
+
+                return isValid;
+            };
+
+            const validateForm = () => {
+                let isValid = true;
+                inputs.forEach((input) => {
+                    if (!validateInput(input)) {
+                        isValid = false;
+                    }
+                });
+                return isValid;
+            };
+
+            inputs.forEach((input) => {
+                input.addEventListener("input", function () {
+                    validateInput(this);
+                });
+            });
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (validateForm()) {
+                    alert("회원가입 완료 후 로그인 페이지로 이동");
+                    form.reset();
+                }
+            });
+
             // $name.addEventListener("input", (e) => {
             //     const inputValue = e.target.value;
             //     const $nameError = document.querySelector("#nameError");
@@ -144,47 +190,47 @@
             //     document.querySelector(".log2").innerHTML = inputValue;
             // });
 
-            for (const property in errorMessages) {
-                document
-                    .querySelector(`#${property}`)
-                    .addEventListener("input", (e) => {
-                        const inputValue = e.target.value;
-                        if (property === "confirmPassword") {
-                            document.querySelector(
-                                `#${property}Error`
-                            ).textContent =
-                                inputValue ===
-                                document.querySelector("#password").value
-                                    ? ""
-                                    : errorMessages[property];
-                        } else {
-                            document.querySelector(
-                                `#${property}Error`
-                            ).textContent = patterns[property].test(inputValue)
-                                ? ""
-                                : errorMessages[property];
-                        }
-                    });
-            }
+            // for (const property in errorMessages) {
+            //     document
+            //         .querySelector(`#${property}`)
+            //         .addEventListener("input", (e) => {
+            //             const inputValue = e.target.value;
+            //             if (property === "confirmPassword") {
+            //                 document.querySelector(
+            //                     `#${property}Error`
+            //                 ).textContent =
+            //                     inputValue ===
+            //                     document.querySelector("#password").value
+            //                         ? ""
+            //                         : errorMessages[property];
+            //             } else {
+            //                 document.querySelector(
+            //                     `#${property}Error`
+            //                 ).textContent = patterns[property].test(inputValue)
+            //                     ? ""
+            //                     : errorMessages[property];
+            //             }
+            //         });
+            // }
 
-            $signupFrom.addEventListener("submit", (e) => {
-                let count = 0;
-                for (const property in errorMessages) {
-                    const inputValue = document.querySelector(
-                        `#${property}`
-                    ).value;
-                    if (property === "confirmPassword") {
-                        if (
-                            inputValue ===
-                            document.querySelector("#password").value
-                        )
-                            count++;
-                    } else {
-                        if (patterns[property].test(inputValue)) count++;
-                    }
-                }
-                if (count !== 6) e.preventDefault();
-            });
+            // $signupFrom.addEventListener("submit", (e) => {
+            //     let count = 0;
+            //     for (const property in errorMessages) {
+            //         const inputValue = document.querySelector(
+            //             `#${property}`
+            //         ).value;
+            //         if (property === "confirmPassword") {
+            //             if (
+            //                 inputValue ===
+            //                 document.querySelector("#password").value
+            //             )
+            //                 count++;
+            //         } else {
+            //             if (patterns[property].test(inputValue)) count++;
+            //         }
+            //     }
+            //     if (count !== 6) e.preventDefault();
+            // });
         </script>
     </body>
 </html>
