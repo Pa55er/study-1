@@ -10,8 +10,8 @@
                 height: 50px;
                 border: 1px solid tomato;
                 border-radius: 50%;
-                position: absolute;
-                animation: rotate infinite 5s linear;
+                position: fixed;
+                will-change: transform;
             }
             .point::after {
                 content: "";
@@ -21,14 +21,6 @@
                 background-color: tomato;
                 border-radius: 50%;
                 transform: translate(2px, 2px);
-            }
-            @keyframes rotate {
-                0% {
-                    transform: rotate(0);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
             }
         </style>
     </head>
@@ -47,14 +39,16 @@
                 mouseY = e.clientY;
             });
 
-            const tick = () => {
+            function tick() {
+                currentX += (mouseX - currentX) * 0.1;
+                currentY += (mouseY - currentY) * 0.1;
+
+                $point.style.transform = `translate(${currentX - 25}px, ${
+                    currentY - 25
+                }px) rotate(${currentX}deg)`;
+
                 requestAnimationFrame(tick);
-                currentX += (mouseX - (currentX + 50)) * 0.2;
-                currentY += (mouseY - (currentY + 50)) * 0.2;
-                //$point.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-                $point.style.top = `${mouseY}px`;
-                $point.style.left = `${mouseX}px`;
-            };
+            }
             tick();
         </script>
     </body>
