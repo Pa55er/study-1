@@ -51,7 +51,7 @@
                 if (inputText.trim() !== "") {
                     addTextList(inputText);
                     $myText.value = "";
-                    $myText.focus;
+                    $myText.focus();
                     saveToLocalStorage(inputText);
                 } else {
                     console.log("값을 입력해주세요");
