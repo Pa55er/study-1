@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+    </head>
+    <body>
+        <form id="group">
+            <h2>과일선택</h2>
+            <input type="radio" id="apple" name="fruit" value="apple" checked />
+            <label for="apple">사과</label>
+            <input type="radio" id="orange" name="fruit" value="orange" />
+            <label for="orange">오렌지</label>
+            <input type="radio" id="grape" name="fruit" value="grape" />
+            <label for="grape">포도</label>
+
+            <h2>음료</h2>
+            <input type="radio" id="coke" name="drink" value="coke" checked />
+            <label for="coke">콜라</label>
+            <input type="radio" id="tea" name="drink" value="tea" />
+            <label for="tea">티</label>
+        </form>
+
+        <script>
+            const $group = document.querySelector("#group");
+            console.log($group.fruit);
+            console.log($group.drink);
+
+            const handleChange = (e) => {
+                console.log(e);
+                const fruitValue = $group.fruit.value;
+                const drinkValue = $group.drink.value;
+                console.log(fruitValue, drinkValue);
+            };
+
+            $group.addEventListener("change", handleChange);
+        </script>
+    </body>
+</html>
