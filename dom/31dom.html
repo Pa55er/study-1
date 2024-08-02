@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            main {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 2em;
+                line-height: 1.5;
+            }
+            article {
+                padding: 150px 0;
+                width: 80%;
+            }
+            em {
+                color: tomato;
+                font-size: 1.2em;
+            }
+            .over {
+                border-bottom: 1px solid lightcoral;
+            }
+            .cursor {
+                border: 5px solid lightblue;
+                position: absolute;
+                /* transform: translate(100px, 100px); */
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                user-select: none;
+                pointer-events: none;
+                transform: scale(1);
+                transition: 0.3s;
+                top: 0;
+                left: 0;
+            }
+            .cursor.active {
+                transform: scale(3);
+            }
+            /* .cursor.active {
+                         transform: translate(calc(100px - 50%), calc(100px - 50%))
+                             scale(3);
+                     } */
+        </style>
+    </head>
+    <body>
+        <div class="cursor"></div>
+        <main>
+            <article>위쪽 영역</article>
+            <article>
+                <p>
+                    ㄴ아ㅣㅓ라ㅣㅣㅣㅣㅣ<em class="over">ㅣ나ㅣ어라넝라ㅣㅓ</em
+                    >ㄴ아러ㅏㄴ어랑너라ㅣㅓㄴㅇ렁나ㅣㅓㄹㅇㄴㄹ이나러
+                    ㄴ아ㅣㅓ라ㅣㅣㅣㅣㅣㅣ나ㅣ어라넝라ㅣㅓㄴ아러ㅏㄴ어랑너라ㅣㅓㄴㅇ렁나ㅣㅓㄹㅇㄴㄹ이나러
+                    ㄴ아ㅣㅓ라ㅣㅣㅣㅣㅣㅣ나ㅣ어라넝라ㅣㅓㄴ아러ㅏㄴ어랑너라ㅣㅓㄴㅇ렁나ㅣㅓㄹㅇㄴㄹ이나러
+                    ㄴ아ㅣㅓ라ㅣㅣㅣㅣㅣㅣ나ㅣ어라넝라ㅣㅓㄴ<em class="over"
+                        >아러ㅏㄴ어랑너라ㅣㅓㄴ</em
+                    >ㅇ렁나ㅣㅓㄹㅇㄴㄹ이나러
+                    ㄴ아ㅣㅓ라ㅣㅣㅣㅣㅣㅣ나ㅣ어라넝라ㅣㅓㄴ아러ㅏㄴ어랑너라ㅣㅓㄴㅇ렁나ㅣㅓㄹㅇㄴㄹ이나러
+                </p>
+            </article>
+            <article class="coord">
+                <p>x좌표 : <span></span></p>
+                <p>y좌표 : <span></span></p>
+            </article>
+        </main>
+
+        <script>
+            const $cursor = document.querySelector(".cursor");
+
+            document.addEventListener("mousemove", (e) => {
+                // $cursor.style.cssText = `transform: translate(calc(${e.pageX}px - 50%), calc(${e.pageY}px - 50%))`;
+                $cursor.style.cssText = `left: ${e.pageX}px; top: ${e.pageY}px`;
+            });
+
+            const $over = document.querySelectorAll(".over");
+            $over.forEach((em) => {
+                em.addEventListener("mouseenter", (e) => {
+                    $cursor.classList.add("active");
+                    // $cursr.style.cssText = `transform: translate(calc(${e.pageX}px - 50%), calc(${e.pageY}px - 50%)) scale(3)`;
+                });
+                em.addEventListener("mouseleave", (e) => {
+                    $cursor.classList.remove("active");
+                    // $cursr.style.cssText = `transform: translate(calc(${e.pageX}px - 50%), calc(${e.pageY}px - 50%)) scale(1)`;
+                });
+            });
+        </script>
+    </body>
+</html>

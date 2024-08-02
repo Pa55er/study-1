@@ -19,22 +19,22 @@
                 text-align: center;
             }
 
-            #signupFrom {
+            #signupForm {
                 border: 5px solid lightgray;
                 font-size: 0.95rem;
             }
-            #signupFrom > div {
+            #signupForm > div {
                 border: 1px solid lightcoral;
                 margin-bottom: 1.5rem;
                 display: flex;
                 align-content: center;
                 position: relative;
             }
-            #signupFrom label {
+            #signupForm label {
                 width: 100px;
                 padding: 0.5rem;
             }
-            #signupFrom input {
+            #signupForm input {
                 flex: 1;
                 background-color: aliceblue;
                 padding: 0.5rem;
@@ -42,17 +42,17 @@
                 border: none;
                 border-bottom: 1px solid lightblue;
             }
-            #signupFrom input:focus {
+            #signupForm input:focus {
                 background-color: rgb(200, 228, 252);
             }
 
-            #signupFrom p,
+            #signupForm p,
             .error {
                 font-size: 0.7rem;
                 position: absolute;
                 padding-top: 5px;
             }
-            #signupFrom p {
+            #signupForm p {
                 border: 1px solid blue;
                 right: 0;
             }
@@ -66,7 +66,7 @@
     <body>
         <main>
             <h1>회원가입</h1>
-            <form id="signupFrom">
+            <form id="signupForm">
                 <div>
                     <label for="name">회원이름</label>
                     <input type="text" id="name" required />
@@ -187,6 +187,8 @@
             //     document.querySelector(".log2").innerHTML = inputValue;
             // });
 
+            // const $signupForm = document.getElementById("signupForm");
+
             // for (const property in errorMessages) {
             //     document
             //         .querySelector(`#${property}`)
@@ -210,7 +212,7 @@
             //         });
             // }
 
-            // $signupFrom.addEventListener("submit", (e) => {
+            // $signupForm.addEventListener("submit", (e) => {
             //     let count = 0;
             //     for (const property in errorMessages) {
             //         const inputValue = document.querySelector(
