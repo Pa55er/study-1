@@ -15,15 +15,6 @@
                     <ul class="sliderUl">
                         <li class="slider">
                             <div>
-                                <p>슬라이드 번호4</p>
-                                <img
-                                    src="https://picsum.photos/300/600"
-                                    alt=""
-                                />
-                            </div>
-                        </li>
-                        <li class="slider">
-                            <div>
                                 <p>슬라이드 번호1</p>
                                 <img
                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Boracay_White_Beach_in_day_%28985286231%29.jpg/1200px-Boracay_White_Beach_in_day_%28985286231%29.jpg"
@@ -49,6 +40,15 @@
                                 />
                             </div>
                         </li>
+                        <li class="slider">
+                            <div>
+                                <p>슬라이드 번호4</p>
+                                <img
+                                    src="https://picsum.photos/300/600"
+                                    alt=""
+                                />
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <button class="btn prev">이전</button>
@@ -62,6 +62,59 @@
             </section>
         </main>
 
-        <script></script>
+        <script>
+            const $sliderUl = document.querySelector(".sliderUl");
+            const $dots = document.querySelectorAll(".slider-dot span");
+            const $prevBtn = document.querySelector(".prev");
+            const $nextBtn = document.querySelector(".next");
+
+            // 선택된 페이지네이션 번호
+            const sliderNum = 1;
+
+            // 초기 세팅 함수
+            function initialSettings() {
+                // 반복 요소들 추가
+                const newEle = Array.from($sliderUl.children);
+                newEle.shift();
+                newEle.reverse();
+                newEle.forEach((element) => {
+                    $sliderUl.prepend(element.cloneNode(true));
+                });
+
+                // sliderUl, slider들 넓이와 위치 조절
+                const len = $sliderUl.children.length;
+                $sliderUl.style.cssText = `
+                    width: calc(100% * ${len});
+                    transform: translate(calc(-100% / ${len} * ${Math.floor(
+                    len / 2
+                )}));
+                `;
+                const $slides = document.querySelectorAll(".sliderUl .slider");
+                $slides.forEach((element) => {
+                    element.style.cssText = `width: calc(100% / ${len});`;
+                });
+
+                // 페이지네이션 1번 span 태그에 "on" 클래스명 추가
+                document.querySelector(".dot1").classList.add("on");
+            }
+
+            // slider 이동 함수
+            function moveSlider(count) {}
+
+            initialSettings();
+            $prevBtn.addEventListener("click", () => {
+                moveSlider(-1);
+                //////////////////////////////////////////////////////////////
+            });
+            $nextBtn.addEventListener("click", () => {
+                moveSlider(1);
+                //////////////////////////////////////////////////////////////
+            });
+            $dots.forEach((element) => {
+                element.addEventListener("click", () => {
+                    //////////////////////////////////////////////////////////////
+                });
+            });
+        </script>
     </body>
 </html>

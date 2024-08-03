@@ -65,21 +65,21 @@ li {
 }
 .slide-wrap {
     border: 5px solid lightgreen;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .sliderUl {
     border: 5px slateblue solid;
     display: flex;
     width: 300%;
-    transform: translateX(-33.3333%);
+    /* transform: translateX(-33.3333%); */
 }
 .slider {
     border: 5px solid red;
     width: calc(100% / 3);
 }
-.slider:nth-of-type(3) ~ .slider {
+/* .slider:nth-of-type(3) ~ .slider {
     display: none;
-}
+} */
 .slider > div {
     position: relative;
     padding-top: 35%;
