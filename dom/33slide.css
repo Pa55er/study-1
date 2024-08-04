@@ -22,7 +22,7 @@ li {
 }
 .btn,
 .slider-dot {
-    border: 5px solid rgb(0, 213, 255);
+    /* border: 5px solid rgb(0, 213, 255); */
     position: absolute;
 }
 .slider-dot {
@@ -65,7 +65,7 @@ li {
 }
 .slide-wrap {
     border: 5px solid lightgreen;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .sliderUl {
     border: 5px slateblue solid;
