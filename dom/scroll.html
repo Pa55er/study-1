@@ -155,7 +155,9 @@
                 });
             };
 
+            // 이 코드의 주요 목적은 페이지에서 마우스 휠 동작으로 인한 스크롤을 방지하는 것
             document.addEventListener("wheel", handleWheel, { passive: false });
+
             window.addEventListener("scroll", updateNavigation);
 
             $navLink.forEach((link, index) => {
